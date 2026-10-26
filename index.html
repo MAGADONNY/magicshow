@@ -72,3 +72,225 @@
             color: var(--primary);
             padding: 0.6rem 1.2rem;
             border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 5rem;
+            background: radial-gradient(circle at center, #1a1610 0%, var(--dark) 70%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(197, 160, 89, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--primary-light);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        /* German Text Showcase Box */
+        .german-showcase {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem 0 3rem;
+            text-align: left;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .german-showcase::before {
+            content: "“";
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            color: var(--primary);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .german-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .feature-card {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-color);
+        }
+
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Button */
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, #a37f3b 100%);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(197, 160, 89, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            background: #050505;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .german-showcase {
+                padding: 1.5rem;
+            }
+            .german-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            MAGADONNY <span>Magic Show</span>
+        </a>
+        <a href="#kontakt" class="nav-cta">Kontakt / Buchung</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">Exklusive Unterhaltung</span>
+            <h1>MAGADONNY</h1>
+            <h2>MAGIC SHOW</h2>
+            
+            <!-- German Showcase Text Box -->
+            <div class="german-showcase">
+                <p class="german-text">
+                    Zauberkunst in unmittelbarer Nähe zum Publikum (Close-Up-Magie / Dichtdranzauber). Der Zauberer bewegt sich frei zwischen den Gästen und spricht diese aktiv an. Diese Form der Zauberei ist auch bekannt als Table-Hopping (Zauberei direkt an den Tischen der Gäste) bzw. Walking-Act (Interaktive Zauberei mit stehenden Gästegruppen). Diese Form der Zauberei ist sehr interaktiv für die Gäste und bietet einen sehr großen emotionalen Mehrwert und den größten Erinnerungswert. Die Veranstaltung wird nicht unterbrochen, da kontinuierlich einzelne Gäste in kleinen Gruppen verzaubert werden. Es ist kein zusätzlicher Platzbedarf nötig, da direkt in den Händen der Gäste gezaubert wird.
+                </p>
+            </div>
+
+            <!-- Highlights Grid -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Table-Hopping</h3>
+                    <p>Direkt an den Tischen Ihrer Gäste für erstklassige, hautnahe Unterhaltung.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Walking-Act</h3>
+                    <p>Interaktive Magie im Stehen für dynamische Gruppen und ungezwungene Atmosphäre.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Kein Platzbedarf</h3>
+                    <p>Es wird keine Bühne benötigt – die Magie findet direkt in den Händen statt.</p>
+                </div>
+            </div>
+
+            <a href="mailto:magicamp@bluewin.ch" id="kontakt" class="btn-primary">Termin anfragen</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>MAGADONNY Magic Show</span>. Alle Rechte vorbehalten.</p>
+    </footer>
+
+</body>
+</html>
