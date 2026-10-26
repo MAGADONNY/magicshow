@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAGADONNY Magic Show | Unvergessliche Momente</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #c5a059;
@@ -45,7 +45,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: 1rem 5%;
         }
 
         .logo {
@@ -67,25 +67,42 @@
             letter-spacing: 1px;
         }
 
-        .nav-cta {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.6rem 1.4rem;
-            border-radius: 4px;
+        /* Phone Numbers Container in Header */
+        .header-phones {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: flex-end;
+        }
+
+        .phone-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-light);
+            text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
-            cursor: pointer;
+            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: 4px;
             transition: all 0.3s ease;
-            text-decoration: none;
+            background: rgba(197, 160, 89, 0.08);
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
 
-        .nav-cta:hover {
+        .phone-link:hover {
             background: var(--primary);
             color: var(--dark);
+            border-color: var(--primary);
         }
 
-        /* Hero Banner - sa tvojom hero-aces.png slikom */
+        .flag-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        /* Hero Banner - sa hero-aces.png slikom */
         .hero-banner {
             position: relative;
             min-height: 85vh;
@@ -138,10 +155,9 @@
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
         }
 
-        /* Stil za tekst o gostovanju u Švajcarskoj */
         .guest-location {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
             color: var(--primary-light);
             font-weight: 500;
             letter-spacing: 1.5px;
@@ -342,6 +358,19 @@
         }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0.8rem 5%;
+            }
+            .header-phones {
+                align-items: center;
+                flex-direction: row;
+                gap: 8px;
+            }
+            .hero-banner {
+                padding-top: 11rem;
+            }
             .german-showcase {
                 padding: 1.5rem;
             }
@@ -361,7 +390,16 @@
         <a href="#" class="logo">
             MAGADONNY <span>Magic Show</span>
         </a>
-        <a href="#kontakt" class="nav-cta">Kontakt / Buchung</a>
+        
+        <!-- Telefonski brojevi sa zastavicama -->
+        <div class="header-phones">
+            <a href="tel:+41774994844" class="phone-link">
+                <span class="flag-icon">🇨🇭</span> +41 77 499 48 44
+            </a>
+            <a href="tel:+38163310850" class="phone-link">
+                <span class="flag-icon">🇷🇸</span> +381 63 310 850
+            </a>
+        </div>
     </header>
 
     <!-- Top Hero Banner -->
@@ -372,7 +410,6 @@
             <h1 class="magadonny-title">MAGADONNY</h1>
             <h2 class="magic-show-title">MAGIC SHOW</h2>
             
-            <!-- Dodato mesto za gostovanje u Švajcarskoj -->
             <div class="guest-location">Gastspiel in der Schweiz, Stein am Rhein / SH - Kanton Schaffhausen</div>
 
             <div class="intro-headline">Unvergessliche Momente für Ihr Event</div>
