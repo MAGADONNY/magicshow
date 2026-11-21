@@ -32,6 +32,74 @@
             overflow-x: hidden;
         }
 
+        /* Suptilne zlatne čestice / zvezdice preko stranice */
+        .magic-sparkles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 900;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: var(--size, 4px);
+            height: var(--size, 4px);
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff3cc 0%, var(--primary-light) 55%, transparent 100%);
+            box-shadow: 0 0 8px rgba(223, 186, 118, 0.75);
+            opacity: 0;
+            animation: sparkleFloat var(--duration, 7s) ease-in-out var(--delay, 0s) infinite;
+        }
+
+        .sparkle--star {
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .sparkle--star::before,
+        .sparkle--star::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(90deg, transparent, #fff4d2, transparent);
+            border-radius: 999px;
+        }
+
+        .sparkle--star::before {
+            width: 100%;
+            height: 1.5px;
+        }
+
+        .sparkle--star::after {
+            width: 1.5px;
+            height: 100%;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 12px, 0) scale(0.5);
+            }
+            20% {
+                opacity: var(--peak-opacity, 0.75);
+            }
+            50% {
+                opacity: calc(var(--peak-opacity, 0.75) * 0.45);
+                transform: translate3d(var(--drift-x, 8px), -14px, 0) scale(1.1);
+            }
+            80% {
+                opacity: var(--peak-opacity, 0.75);
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(calc(var(--drift-x, 8px) * -0.5), -32px, 0) scale(0.6);
+            }
+        }
+
         /* Header / Nav */
         header {
             position: fixed;
@@ -148,11 +216,32 @@
             font-family: 'Cinzel', serif;
             font-size: clamp(1.8rem, 3.8vw, 3rem);
             font-weight: 600;
-            color: var(--primary);
             letter-spacing: 4px;
             margin-top: 0.3rem;
             margin-bottom: 1rem;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            background: linear-gradient(
+                110deg,
+                var(--primary) 0%,
+                var(--primary) 38%,
+                #fff3c4 50%,
+                var(--primary-light) 62%,
+                var(--primary) 100%
+            );
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.85));
+            animation: goldShimmer 6.5s ease-in-out infinite;
+        }
+
+        @keyframes goldShimmer {
+            0%, 100% {
+                background-position: 100% center;
+            }
+            50% {
+                background-position: 0% center;
+            }
         }
 
         .guest-location {
@@ -358,6 +447,20 @@
             color: var(--primary);
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .sparkle,
+            .magic-show-title {
+                animation: none;
+            }
+            .magic-show-title {
+                background: none;
+                color: var(--primary);
+            }
+            .sparkle {
+                opacity: 0.35;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -385,6 +488,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Suptilni sloj zlatnih zvezdica i čestica -->
+    <div class="magic-sparkles" aria-hidden="true"></div>
 
     <!-- Header Navigation -->
     <header>
@@ -506,6 +612,37 @@
     <footer>
         <p>&copy; 2026 <span>MAGADONNY Magic Show</span>. Alle Rechte vorbehalten.</p>
     </footer>
+
+    <script>
+        (function () {
+            const container = document.querySelector('.magic-sparkles');
+            if (!container) return;
+
+            const isMobile = window.innerWidth < 768;
+            const count = isMobile ? 16 : 28;
+
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('span');
+                const isStar = i % 4 === 0;
+                const size = isStar
+                    ? (Math.random() * 6 + 9).toFixed(1) + 'px'
+                    : (Math.random() * 2.5 + 2.5).toFixed(1) + 'px';
+
+                el.className = isStar ? 'sparkle sparkle--star' : 'sparkle';
+                el.style.left = (Math.random() * 96 + 2).toFixed(2) + '%';
+                el.style.top = (Math.random() * 92 + 4).toFixed(2) + '%';
+                el.style.setProperty('--size', size);
+                el.style.setProperty('--duration', (Math.random() * 5 + 6).toFixed(2) + 's');
+                el.style.setProperty('--delay', (Math.random() * -8).toFixed(2) + 's');
+                el.style.setProperty('--drift-x', ((Math.random() - 0.5) * 24).toFixed(1) + 'px');
+                el.style.setProperty('--peak-opacity', isStar
+                    ? (Math.random() * 0.35 + 0.35).toFixed(2)
+                    : (Math.random() * 0.4 + 0.45).toFixed(2));
+
+                container.appendChild(el);
+            }
+        })();
+    </script>
 
 </body>
 </html>
