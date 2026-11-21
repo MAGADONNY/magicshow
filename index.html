@@ -120,12 +120,24 @@
             font-family: 'Cinzel', serif;
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--primary);
             letter-spacing: 2px;
             text-decoration: none;
             display: flex;
             gap: 10px;
             align-items: baseline;
+            background: linear-gradient(
+                110deg,
+                var(--primary) 0%,
+                var(--primary) 38%,
+                #fff3c4 50%,
+                var(--primary-light) 62%,
+                var(--primary) 100%
+            );
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: goldShimmer 8s ease-in-out infinite;
         }
 
         .logo span {
@@ -461,9 +473,14 @@
 
         @media (prefers-reduced-motion: reduce) {
             .sparkle,
+            .logo,
             .magadonny-title,
             .magic-show-title {
                 animation: none;
+            }
+            .logo {
+                background: none;
+                color: var(--primary);
             }
             .magadonny-title {
                 background: none;
