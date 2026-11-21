@@ -147,6 +147,45 @@
             letter-spacing: 1px;
         }
 
+        /* Desni blok u header-u: jezik + telefoni */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lang-switcher {
+            display: inline-flex;
+            background: rgba(197, 160, 89, 0.08);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .lang-btn:hover {
+            color: var(--primary-light);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
         /* Phone Numbers Container in Header */
         .header-phones {
             display: flex;
@@ -437,6 +476,21 @@
             border-radius: 12px;
         }
 
+        .cta-title {
+            font-family: 'Cinzel', serif;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .btn-primary {
             position: relative;
             overflow: hidden;
@@ -539,13 +593,18 @@
                 gap: 10px;
                 padding: 0.8rem 5%;
             }
+            .header-right {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
             .header-phones {
                 align-items: center;
                 flex-direction: row;
                 gap: 8px;
             }
             .hero-banner {
-                padding-top: 11rem;
+                padding-top: 12rem;
             }
             .german-showcase {
                 padding: 1.5rem;
@@ -569,34 +628,42 @@
         <a href="#" class="logo">
             MAGADONNY <span>Magic Show</span>
         </a>
-        
-        <!-- Telefonski brojevi sa zastavicama -->
-        <div class="header-phones">
-            <a href="tel:+41774994844" class="phone-link">
-                <span class="flag-icon">🇨🇭</span> +41 77 499 48 44
-            </a>
-            <a href="tel:+38163310850" class="phone-link">
-                <span class="flag-icon">🇷🇸</span> +381 63 310 850
-            </a>
+
+        <div class="header-right">
+            <!-- Preklopnik jezika DE / SR -->
+            <div class="lang-switcher" role="group" aria-label="Language selector">
+                <button type="button" class="lang-btn active" data-lang="de">DE</button>
+                <button type="button" class="lang-btn" data-lang="sr">SR</button>
+            </div>
+
+            <!-- Telefonski brojevi sa zastavicama -->
+            <div class="header-phones">
+                <a href="tel:+41774994844" class="phone-link">
+                    <span class="flag-icon">🇨🇭</span> +41 77 499 48 44
+                </a>
+                <a href="tel:+38163310850" class="phone-link">
+                    <span class="flag-icon">🇷🇸</span> +381 63 310 850
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Top Hero Banner -->
     <section class="hero-banner">
         <div class="hero-content">
-            <span class="badge">Exklusive Zauberkunst</span>
-            
+            <span class="badge" data-i18n="badge">Exklusive Zauberkunst</span>
+
             <h1 class="magadonny-title">MAGADONNY</h1>
             <h2 class="magic-show-title">MAGIC SHOW</h2>
-            
-            <div class="guest-location">Gastspiel in der Schweiz, Stein am Rhein / SH - Schaffhausen</div>
 
-            <div class="intro-headline">Unvergessliche Momente für Ihr Event</div>
-            <p class="intro-subtext">
+            <div class="guest-location" data-i18n="location">Gastspiel in der Schweiz, Stein am Rhein / SH - Schaffhausen</div>
+
+            <div class="intro-headline" data-i18n="introHeadline">Unvergessliche Momente für Ihr Event</div>
+            <p class="intro-subtext" data-i18n="introSubtext">
                 Faszination direkt vor Ihren Augen. Close-Up Magie, Table-Hopping &amp; Walking-Act – das interaktive Highlight für Hochzeiten, Firmenevents und exklusive Feiern.
             </p>
 
-            <a href="#kontakt" class="btn-primary">Jetzt Anfragen</a>
+            <a href="#kontakt" class="btn-primary" data-i18n="heroCta">Jetzt Anfragen</a>
         </div>
     </section>
 
@@ -605,11 +672,11 @@
 
         <!-- Detailed Concept Text Box -->
         <div class="section-header">
-            <h2>Das Konzept</h2>
+            <h2 data-i18n="conceptHeading">Das Konzept</h2>
         </div>
 
         <div class="german-showcase">
-            <p class="german-text">
+            <p class="german-text" data-i18n="conceptText">
                 Zauberkunst in unmittelbarer Nähe zum Publikum (Close-Up-Magie / Dichtdranzauber). Der Zauberer bewegt sich frei zwischen den Gästen und spricht diese aktiv an. Diese Form der Zauberei ist auch bekannt als Table-Hopping (Zauberei direkt an den Tischen der Gäste) bzw. Walking-Act (Interaktive Zauberei mit stehenden Gästegruppen). Diese Form der Zauberei ist sehr interaktiv für die Gäste und bietet einen sehr großen emotionalen Mehrwert und den größten Erinnerungswert. Die Veranstaltung wird nicht unterbrochen, da kontinuierlich einzelne Gäste in kleinen Gruppen verzaubert werden. Es ist kein zusätzlicher Platzbedarf nötig, da direkt in den Händen der Gäste gezaubert wird.
             </p>
         </div>
@@ -617,76 +684,170 @@
         <!-- Key Features Grid -->
         <div class="features-grid">
             <div class="feature-card">
-                <h3>Table-Hopping</h3>
-                <p>Zauberei direkt an den Tischen Ihrer Gäste für erstklassige, hautnahe Unterhaltung.</p>
+                <h3 data-i18n="feat1Title">Table-Hopping</h3>
+                <p data-i18n="feat1Desc">Zauberei direkt an den Tischen Ihrer Gäste für erstklassige, hautnahe Unterhaltung.</p>
             </div>
             <div class="feature-card">
-                <h3>Interaktive</h3>
-                <p>Interaktive Magie im Stehen für dynamische Gruppen und eine lockere Atmosphäre.</p>
+                <h3 data-i18n="feat2Title">Interaktive</h3>
+                <p data-i18n="feat2Desc">Interaktive Magie im Stehen für dynamische Gruppen und eine lockere Atmosphäre.</p>
             </div>
             <div class="feature-card">
-                <h3>Kein Platzbedarf</h3>
-                <p>Es wird keine Bühne benötigt – das Geschehen findet direkt in den Händen der Gäste statt.</p>
+                <h3 data-i18n="feat3Title">Kein Platzbedarf</h3>
+                <p data-i18n="feat3Desc">Es wird keine Bühne benötigt – das Geschehen findet direkt in den Händen der Gäste statt.</p>
             </div>
         </div>
 
         <!-- Gallery Grid (6 Photo Slots) -->
         <section class="gallery-section">
             <div class="section-header">
-                <h2>Impressionen</h2>
+                <h2 data-i18n="galleryHeading">Impressionen</h2>
             </div>
             <div class="gallery-grid">
                 <!-- Slot 1 -->
                 <div class="gallery-item">
                     <img src="magcz.jpg?q=80&w=600&auto=format&fit=crop" alt="Magic Performance 1">
-                    <div class="gallery-caption">Close-Up Magie</div>
+                    <div class="gallery-caption" data-i18n="gal1">Close-Up Magie</div>
                 </div>
                 <!-- Slot 2 -->
                 <div class="gallery-item">
                     <img src="magbi.jpg?q=80&w=600&auto=format&fit=crop" alt="Magic Performance 2">
-                    <div class="gallery-caption">Table-Hopping</div>
+                    <div class="gallery-caption" data-i18n="gal2">Table-Hopping</div>
                 </div>
                 <!-- Slot 3 -->
                 <div class="gallery-item">
                     <img src="magzu.jpg?q=80&w=600&auto=format&fit=crop" alt="Magic Performance 3">
-                    <div class="gallery-caption">Walking-Act</div>
+                    <div class="gallery-caption" data-i18n="gal3">Walking-Act</div>
                 </div>
                 <!-- Slot 4 -->
                 <div class="gallery-item">
                     <img src="magkid.jpg?q=80&w=600&auto=format&fit=crop" alt="Magic Performance 4">
-                    <div class="gallery-caption">Kinderkleidung</div>
+                    <div class="gallery-caption" data-i18n="gal4">Kinderkleidung</div>
                 </div>
                 <!-- Slot 5 -->
                 <div class="gallery-item">
                     <img src="magair1.jpg?q=80&w=600&auto=format&fit=crop" alt="Magic Performance 5">
-                    <div class="gallery-caption">Exklusive Events</div>
+                    <div class="gallery-caption" data-i18n="gal5">Exklusive Events</div>
                 </div>
                 <!-- Slot 6 -->
                 <div class="gallery-item">
                     <img src="eu.jpg?q=80&w=600&auto=format&fit=crop" alt="Magic Performance 6">
-                    <div class="gallery-caption">Vorherige Auswärtsspiele</div>
+                    <div class="gallery-caption" data-i18n="gal6">Vorherige Auswärtsspiele</div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action / Booking Box -->
         <section id="kontakt" class="cta-box">
-            <h2 style="font-family: 'Cinzel', serif; color: var(--primary); font-size: 2rem; margin-bottom: 1rem;">Buchen Sie Magie für Ihr Event</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <h2 class="cta-title" data-i18n="ctaTitle">Buchen Sie Magie für Ihr Event</h2>
+            <p class="cta-text" data-i18n="ctaText">
                 Sichern Sie sich jetzt Ihren Wunschtermin für Hochzeiten, Firmenfeiern oder private Jubiläen.
             </p>
-            <a href="mailto:magicamp@bluewin.ch" class="btn-primary">Termin Anfragen</a>
+            <a href="mailto:magicamp@bluewin.ch" class="btn-primary" data-i18n="ctaButton">Termin Anfragen</a>
         </section>
 
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 <span>MAGADONNY Magic Show</span>. Alle Rechte vorbehalten.</p>
+        <p data-i18n="footer">&copy; 2026 <span>MAGADONNY Magic Show</span>. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script>
         (function () {
+            const translations = {
+                de: {
+                    pageTitle: "MAGADONNY Magic Show | Unvergessliche Momente",
+                    badge: "Exklusive Zauberkunst",
+                    location: "Gastspiel in der Schweiz, Stein am Rhein / SH - Schaffhausen",
+                    introHeadline: "Unvergessliche Momente für Ihr Event",
+                    introSubtext: "Faszination direkt vor Ihren Augen. Close-Up Magie, Table-Hopping & Walking-Act – das interaktive Highlight für Hochzeiten, Firmenevents und exklusive Feiern.",
+                    heroCta: "Jetzt Anfragen",
+                    conceptHeading: "Das Konzept",
+                    conceptText: "Zauberkunst in unmittelbarer Nähe zum Publikum (Close-Up-Magie / Dichtdranzauber). Der Zauberer bewegt sich frei zwischen den Gästen und spricht diese aktiv an. Diese Form der Zauberei ist auch bekannt als Table-Hopping (Zauberei direkt an den Tischen der Gäste) bzw. Walking-Act (Interaktive Zauberei mit stehenden Gästegruppen). Diese Form der Zauberei ist sehr interaktiv für die Gäste und bietet einen sehr großen emotionalen Mehrwert und den größten Erinnerungswert. Die Veranstaltung wird nicht unterbrochen, da kontinuierlich einzelne Gäste in kleinen Gruppen verzaubert werden. Es ist kein zusätzlicher Platzbedarf nötig, da direkt in den Händen der Gäste gezaubert wird.",
+                    feat1Title: "Table-Hopping",
+                    feat1Desc: "Zauberei direkt an den Tischen Ihrer Gäste für erstklassige, hautnahe Unterhaltung.",
+                    feat2Title: "Interaktive",
+                    feat2Desc: "Interaktive Magie im Stehen für dynamische Gruppen und eine lockere Atmosphäre.",
+                    feat3Title: "Kein Platzbedarf",
+                    feat3Desc: "Es wird keine Bühne benötigt – das Geschehen findet direkt in den Händen der Gäste statt.",
+                    galleryHeading: "Impressionen",
+                    gal1: "Close-Up Magie",
+                    gal2: "Table-Hopping",
+                    gal3: "Walking-Act",
+                    gal4: "Kinderkleidung",
+                    gal5: "Exklusive Events",
+                    gal6: "Vorherige Auswärtsspiele",
+                    ctaTitle: "Buchen Sie Magie für Ihr Event",
+                    ctaText: "Sichern Sie sich jetzt Ihren Wunschtermin für Hochzeiten, Firmenfeiern oder private Jubiläen.",
+                    ctaButton: "Termin Anfragen",
+                    footer: "&copy; 2026 <span>MAGADONNY Magic Show</span>. Alle Rechte vorbehalten."
+                },
+                sr: {
+                    pageTitle: "MAGADONNY Magic Show | Trenuci za pamćenje",
+                    badge: "Ekskluzivna umetnost magije",
+                    location: "Gostovanje u Švajcarskoj, Stein am Rhein / SH - Schaffhausen",
+                    introHeadline: "Trenuci za pamćenje na vašem događaju",
+                    introSubtext: "Fascinacija tik pred vašim očima. Close-Up magija, Table-Hopping i Walking-Act – interaktivni vrhunac za venčanja, korporativne proslave i ekskluzivne događaje.",
+                    heroCta: "Pošaljite upit",
+                    conceptHeading: "Koncept",
+                    conceptText: "Umetnost magije u neposrednoj blizini publike (Close-Up magija / magija izbliza). Mađioničar se slobodno kreće među gostima i aktivno im se obraća. Ovaj oblik magije poznat je i kao Table-Hopping (magija direktno za stolovima gostiju) odnosno Walking-Act (interaktivna magija sa grupama gostiju koje stoje). Veoma je interaktivan za publiku i pruža veliku emocionalnu vrednost i najjači utisak za pamćenje. Događaj se ne prekida, jer se neprekidno zabavljaju pojedinačni gosti u manjim grupama. Nije potreban dodatni prostor, jer se magija dešava direktno u rukama gostiju.",
+                    feat1Title: "Table-Hopping",
+                    feat1Desc: "Magija direktno za stolovima vaših gostiju za vrhunsku zabavu iz neposredne blizine.",
+                    feat2Title: "Interaktivno",
+                    feat2Desc: "Interaktivna magija dok gosti stoje – idealna za dinamične grupe i opuštenu atmosferu.",
+                    feat3Title: "Bez potrebe za prostorom",
+                    feat3Desc: "Bina nije potrebna – sve se dešava direktno u rukama gostiju.",
+                    galleryHeading: "Utisci i kadrovi",
+                    gal1: "Close-Up magija",
+                    gal2: "Table-Hopping",
+                    gal3: "Walking-Act",
+                    gal4: "Dečiji nastupi",
+                    gal5: "Ekskluzivni događaji",
+                    gal6: "Prethodna gostovanja",
+                    ctaTitle: "Rezervišite magiju za svoj događaj",
+                    ctaText: "Obezbedite na vreme svoj termin za venčanja, poslovne proslave ili privatne jubileje.",
+                    ctaButton: "Rezervišite termin",
+                    footer: "&copy; 2026 <span>MAGADONNY Magic Show</span>. Sva prava zadržana."
+                }
+            };
+
+            const buttons = document.querySelectorAll('.lang-btn');
+            const i18nElements = document.querySelectorAll('[data-i18n]');
+
+            function applyLanguage(lang) {
+                const dict = translations[lang] || translations.de;
+                document.documentElement.lang = lang;
+                document.title = dict.pageTitle;
+
+                i18nElements.forEach((el) => {
+                    const key = el.getAttribute('data-i18n');
+                    if (dict[key] !== undefined) {
+                        el.innerHTML = dict[key];
+                    }
+                });
+
+                buttons.forEach((btn) => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+
+                try {
+                    localStorage.setItem('magadonny_lang', lang);
+                } catch (e) {}
+            }
+
+            buttons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    applyLanguage(btn.getAttribute('data-lang'));
+                });
+            });
+
+            let savedLang = 'de';
+            try {
+                savedLang = localStorage.getItem('magadonny_lang') || 'de';
+            } catch (e) {}
+            applyLanguage(savedLang);
+
+            // Suptilne zlatne zvezdice i čestice
             const container = document.querySelector('.magic-sparkles');
             if (!container) return;
 
