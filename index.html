@@ -120,12 +120,24 @@
             font-family: 'Cinzel', serif;
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--primary);
             letter-spacing: 2px;
             text-decoration: none;
             display: flex;
             gap: 10px;
             align-items: baseline;
+            background: linear-gradient(
+                110deg,
+                var(--primary) 0%,
+                var(--primary) 38%,
+                #fff3c4 50%,
+                var(--primary-light) 62%,
+                var(--primary) 100%
+            );
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: goldShimmer 8s ease-in-out infinite;
         }
 
         .logo span {
@@ -426,6 +438,8 @@
         }
 
         .btn-primary {
+            position: relative;
+            overflow: hidden;
             display: inline-block;
             background: linear-gradient(135deg, var(--primary) 0%, #a37f3b 100%);
             color: var(--dark);
@@ -438,6 +452,38 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        .btn-primary::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 250, 224, 0.45),
+                transparent
+            );
+            transform: skewX(-22deg);
+            animation: btnSweep 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes btnSweep {
+            0%, 72% {
+                left: -75%;
+                opacity: 0;
+            }
+            82% {
+                opacity: 1;
+            }
+            100% {
+                left: 135%;
+                opacity: 0;
+            }
         }
 
         .btn-primary:hover {
@@ -461,9 +507,15 @@
 
         @media (prefers-reduced-motion: reduce) {
             .sparkle,
+            .logo,
             .magadonny-title,
-            .magic-show-title {
+            .magic-show-title,
+            .btn-primary::after {
                 animation: none;
+            }
+            .logo {
+                background: none;
+                color: var(--primary);
             }
             .magadonny-title {
                 background: none;
@@ -472,6 +524,9 @@
             .magic-show-title {
                 background: none;
                 color: var(--primary);
+            }
+            .btn-primary::after {
+                display: none;
             }
             .sparkle {
                 opacity: 0.35;
